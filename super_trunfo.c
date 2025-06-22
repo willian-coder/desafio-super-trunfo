@@ -9,6 +9,7 @@ float area1, pib1 = 0.00;
 char estado1[10];
 char codcarta1[8];
 char nomeCidade1[45];
+
 float calcDensidadePop1; // variavel densidade
 float calcPIB1; // variavei de calculo pib
 
@@ -95,16 +96,6 @@ scanf("%f", &pib2);
 printf("Número de pontos turisticos: \n");
 scanf("%d", &numPontosTuristicos2);
 
-/*Exibição primeira carta
-printf("\nCarta 1:\n");
-printf("Estado: %s\n", estado1);
-printf("Código: %s\n", codcarta1);
-printf("Nome da Cidade: %s\n", nomeCidade1);
-printf("População: %d\n", populacao1);
-printf("Área: %.2f\n", area1);//limitado a duas casas
-printf("PIB: %.2f\n", pib1);//limitado a duas casas
-printf("Numero de pontos turisticos: %d\n", numPontosTuristicos1);*/
-
 //Calculo densidade populacional
 calcDensidadePop1 = (float) populacao1 / area1;
 //printf("Densidade Populacional: %.2f hab/km²\n", calcDensidadePop1);
@@ -115,16 +106,6 @@ calcPIB1 = (float) pib1 / populacao1;
 
 //Calculo super poder primeira carta
 Power1 = (float)populacao1 + area1 + pib1 + numPontosTuristicos1 + calcPIB1;
-
-/*Exibição segunda carta
-printf("\nCarta 2:\n");
-printf("Estado: %s\n", estado2);
-printf("Código: %s\n", codcarta2);
-printf("Nome da Cidade: %s\n", nomeCidade2);
-printf("População: %d\n", populacao2);
-printf("Área: %.2f km²\n", area2);//limitado a duas casas
-printf("PIB: %.2f\n", pib2);//limitado a duas casas
-printf("Numero de pontos turisticos: %d\n", numPontosTuristicos2);*/
 
 //Calculo densidade populacional
 calcDensidadePop2 = (float) populacao2 / area2;
@@ -138,31 +119,43 @@ calcPIB2 = (float) pib2 / populacao2;
 Power2 = (float)populacao2 + area2 + pib2 + numPontosTuristicos2 + calcPIB2;
 
 //Comparação de cartas variaveis
-int compPop = populacao1 > populacao2;
-int compArea = area1 > area2;
-int compPIB = pib1 > pib2;
-int compPontosTuristicos = numPontosTuristicos1 > numPontosTuristicos2;
-int compDensidade = calcDensidadePop1 < calcDensidadePop2;
-int compPibPer = calcPIB1 > calcPIB2;
-int compPower = Power1 > Power2;
+int 
+compPop = populacao1 > populacao2, 
+compArea = area1 > area2, 
+compPIB = pib1 > pib2, 
+compPontosTuristicos = numPontosTuristicos1 > numPontosTuristicos2,
+compDensidade = calcDensidadePop1 < calcDensidadePop2,//densidade: carta com menor valor vence
+compPibPer = calcPIB1 > calcPIB2,
+compPower = Power1 > Power2;
 
 //Mostrando o vencedor comparado, mostrando a saida como carta 1 ou 2
-int cartaVencedoraPop = 2 - compPop;
-int cartaVencedoraArea = 2 - compArea;
-int cartaVencedoraPIB = 2 - compPIB;
-int cartaVencendoraPT = 2 - compPontosTuristicos;
-int cartaVencedoraDensidade = 2 - compDensidade;
-int cartaVencedoraPibPer = 2 - compPibPer;
-int cartaVencedoraPower = 2 - compPower;
+int 
+cartaVencedoraPop = 2 - compPop,
+cartaVencedoraArea = 2 - compArea,
+cartaVencedoraPIB = 2 - compPIB,
+cartaVencendoraPT = 2 - compPontosTuristicos,
+cartaVencedoraDensidade = 2 - compDensidade,
+cartaVencedoraPibPer = 2 - compPibPer,
+cartaVencedoraPower = 2 - compPower;
 
-printf("Comparação de cartas: \n");
-printf("População: Carta %d (%d) \n",cartaVencedoraPop, compPop);
+printf("Comparação de cartas (Atributo: População):\n\n");
+
+printf("Carta 1 - %s (%s): %d\n",nomeCidade1,estado1, populacao1);
+printf("Carta 2 - %s (%s): %d\n",nomeCidade2,estado2, populacao2);
+
+if(cartaVencedoraPop == 1){
+    printf("Resultado: Carta %d (%s) venceu!\n", 1, nomeCidade1);    
+}else{
+    printf("Resultado: Carta %d (%s) venceu!\n", 2, nomeCidade2);
+}
+
+/*printf("População: Carta %d (%d) \n",cartaVencedoraPop, compPop);
 printf("Área: Carta %d (%d)\n",cartaVencedoraArea, compArea);
 printf("PIB: Carta %d (%d)\n",cartaVencedoraPIB, compPIB);
 printf("Pontos Turísticos: Carta %d (%d)\n",cartaVencendoraPT, compPontosTuristicos);
 printf("Densidade Populacional: Carta %d (%d)\n",cartaVencedoraDensidade, compDensidade);
 printf("PIB per Capita: Carta %d (%d)\n",cartaVencedoraPibPer, compPibPer);
-printf("Super Poder: Carta %d (%d)\n", cartaVencedoraPower, compPower);
+printf("Super Poder: Carta %d (%d)\n", cartaVencedoraPower, compPower);*/
 
 //finalizado
 return 0;
